@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h1>Delivery Details</h1>
+    <div th:object="${order}">
+        <table>
+            <tr>
+                <td>Order Number:</td>
+                <td><a th:href="@{'/order/' + *{id}}" th:text="*{id}"></a></td>
+            </tr>
+            <tr>
+                <td colspan="2">Your order will be delivered to <span th:text="*{address}"></span></td>
+            </tr>
+            <tr th:if="*{rush} == true">
+                <td>Pizza cost:</td>
+                <td>$<span th:text="${cost}"></span></td>
+            </tr>
+            <tr th:if="*{rush} == true">
+                <td>Rush:</td>
+                <td>$2</td>
+            </tr>
+            <tr>
+                <td>Total cost:</td>
+                <td>$<span th:text="*{total}"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
